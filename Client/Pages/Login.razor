@@ -1,0 +1,39 @@
+@page "/login"
+@using Client.Services
+@inject AuthService Auth
+@inject NavigationManager Nav
+
+<h3>Login</h3>
+
+<input @bind="username" placeholder="Username" />
+<br />
+<input @bind="password" placeholder="Password" type="password" />
+<br />
+<button @onclick="HandleLogin">Login</button>
+
+@if (error != null)
+{
+    <p style="color:red">@error</p>
+}
+
+@code {
+    string username = "";
+    string password = "";
+    string? error;
+
+    [Parameter]
+    public string? returnUrl { get; set; }
+
+    private async Task HandleLogin()
+    {
+        var ok = await Auth.LoginAsync(username, password);
+
+        if (!ok)
+        {
+            error = "Invalid credentials";
+            return;
+        }
+
+        Nav.NavigateTo("/");
+    }
+}

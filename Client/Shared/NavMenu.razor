@@ -1,0 +1,19 @@
+<AuthorizeView>
+    <Authorized>
+        <li class="nav-item px-3">
+            <NavLink href="/secure">Secure</NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink href="/admin">Admin</NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <LogoutButton />
+        </li>
+    </Authorized>
+
+    <NotAuthorized>
+        <li class="nav-item px-3">
+            <NavLink href="/login">Login</NavLink>
+        </li>
+    </NotAuthorized>
+</AuthorizeView>

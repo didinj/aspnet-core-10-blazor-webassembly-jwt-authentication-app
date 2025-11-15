@@ -1,0 +1,20 @@
+@page "/admin"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "Admin")]
+
+<h3>Admin Dashboard</h3>
+
+<AuthorizeView Roles="Admin">
+    <Authorized>
+        <p>You are an Admin.</p>
+    </Authorized>
+</AuthorizeView>
+
+<AuthorizeView>
+    <Authorized>
+        <p>You are logged in.</p>
+    </Authorized>
+    <NotAuthorized>
+        <p>You are a guest.</p>
+    </NotAuthorized>
+</AuthorizeView>
